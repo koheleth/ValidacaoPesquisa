@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Exclusão de Carro
+{% endblock title %}
+
+{% block tituloPagina %}
+Excluir Carro
+{% endblock tituloPagina%}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h4>Tem certeza que deseja excluir o veículo {{ carro.modelo }}</h4>
+    <button type="submit" class="btn btn-primary">
+        Remover
+    </button>
+</form>
+{% endblock content %}

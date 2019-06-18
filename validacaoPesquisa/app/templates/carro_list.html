@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Listagem de Carros
+{% endblock title %}
+
+{% block tituloPagina %}
+Listagem de Carros
+{% endblock tituloPagina%}
+
+{% block content %}
+<form method="get">
+    <dev class="container">
+        <input type="text" name="busca", placeholder="Buscar veículo">
+        <button type="submit" class="btn btn-primary">
+            Buscar
+        </button>
+    </dev>
+</form>
+
+<table class="table">
+    <thread>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>Ano</th>
+        <th>Valor</th>
+        <th>Data Cadastro</th>
+        <th>Ação</th>
+    </thread>
+    <tbody>
+    {% for car in lista %}
+    <tr>
+        <td>{{ car.modelo }}</td>
+        <td>{{ car.marca }}</td>
+        <td>{{ car.ano }}</td>
+        <td>{{ car.valor}}</td>
+        <td>{{ car.data_cadastro }}</td>
+        <td>
+            <a href="{% url 'editar_carro' pk=car.pk %}">
+                <i class="material-icons">mode_edit</i>
+            </a>
+            <a href="{% url 'remover_carro' pk=car.pk %}">
+                <i class="material-icons">delete</i>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'cadastrar_carro' %}">
+    <button type="submit" class="btn btn-primary">
+        Cadastrar
+    </button>
+</a>
+{% endblock content %}
